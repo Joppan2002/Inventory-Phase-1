@@ -9,7 +9,7 @@ public class InventoryController {
 
     
     public int[] triggerPhase1Processing() {
-        File[] files = service.getCsvFiles();
+        File[] files = service.getCsvFiles().getData();
         if (files == null || files.length == 0) {
             System.out.println("No CSV files found in input folder.");
             int res[]= {0,0,0};
@@ -20,7 +20,7 @@ public class InventoryController {
         int negative=0;
         int processedCount = 0;
         for (File file : files) {
-            boolean result = service.processSingleFile(file);
+            boolean result = service.processSingleFile(file).getData();
             if (result) {
                 positive++;
             } else
